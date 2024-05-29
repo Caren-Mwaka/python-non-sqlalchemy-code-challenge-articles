@@ -103,13 +103,12 @@ class Magazine:
         else:
             return None
         
-    @staticmethod
-    def top_publisher():
+    @classmethod
+    def top_publisher(cls):
         publisher_count = {}
-        for magazine in Magazine.all:
+        for magazine in cls.all:
             publisher_count[magazine] = len(magazine.articles())
         return max(publisher_count, key=publisher_count.get, default=None)
-
 
 class Article:
     all = []
