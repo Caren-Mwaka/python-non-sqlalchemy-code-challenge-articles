@@ -1,4 +1,4 @@
-
+# ARTICLE
 class Article:
     all = []
 
@@ -47,7 +47,7 @@ class Article:
         else:
             raise TypeError("Magazine must be of type Magazine")
 
-
+# AUTHOR
 class Author:
     def __init__(self, name):
         self._name = None
@@ -87,7 +87,7 @@ class Author:
         topics = {magazine.category for magazine in self.magazines()}
         return list(topics) if topics else None
 
-
+# MAGAZINE
 class Magazine:
     all = []
 
