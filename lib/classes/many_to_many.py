@@ -1,3 +1,53 @@
+
+class Article:
+    all = []
+
+    def __init__(self, author, magazine, title):
+        if not isinstance(author, Author):
+            raise TypeError("Author must be of type Author")
+        if not isinstance(magazine, Magazine):
+            raise TypeError("Magazine must be of type Magazine")
+        if not isinstance(title, str):
+            raise TypeError("Title must be of type str")
+        if not (5 <= len(title) <= 50):
+            raise ValueError("Title must be between 5 and 50 characters")
+        self._author = author
+        self._magazine = magazine
+        self._title = title
+        Article.all.append(self)
+        
+    @property
+    def title(self):
+        return self._title
+
+    @property
+    def author(self):
+        return self._author
+    
+    @property
+    def magazine(self):
+        return self._magazine
+
+    @title.setter
+    def title(self, value):
+        if isinstance(value, str):
+            self._title = value
+    
+    @author.setter
+    def author(self, value):
+        if isinstance(value, Author):
+            self._author = value
+        else:
+            raise TypeError("Author must be of type Author")
+        
+    @magazine.setter
+    def magazine(self, value):
+        if isinstance(value, Magazine):
+            self._magazine = value
+        else:
+            raise TypeError("Magazine must be of type Magazine")
+
+
 class Author:
     def __init__(self, name):
         self._name = None
@@ -110,58 +160,6 @@ class Magazine:
             publisher_count[magazine] = len(magazine.articles())
         return max(publisher_count, key=publisher_count.get, default=None)
 
-class Article:
-    all = []
-
-    def __init__(self, author, magazine, title):
-        if not isinstance(author, Author):
-            raise TypeError("Author must be of type Author")
-        if not isinstance(magazine, Magazine):
-            raise TypeError("Magazine must be of type Magazine")
-        if not isinstance(title, str):
-            raise TypeError("Title must be of type str")
-        if not (5 <= len(title) <= 50):
-            raise ValueError("Title must be between 5 and 50 characters")
-        self._author = author
-        self._magazine = magazine
-        self._title = title
-        Article.all.append(self)
-        
-    @property
-    def title(self):
-        return self._title
-
-    @property
-    def author(self):
-        return self._author
-    
-    @property
-    def magazine(self):
-        return self._magazine
-
-    @title.setter
-    def title(self, value):
-        if isinstance(value, str):
-            self._title = value
-    
-    @title.setter
-    def title(self, value):
-        if isinstance(value, str):
-            self._title = value
-    
-    @author.setter
-    def author(self, value):
-        if isinstance(value, Author):
-            self._author = value
-        else:
-            raise TypeError("Author must be of type Author")
-        
-    @magazine.setter
-    def magazine(self, value):
-        if isinstance(value, Magazine):
-            self._magazine = value
-        else:
-            raise TypeError("Magazine must be of type Magazine")
 
 
 # Testing Magazine class
